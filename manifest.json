@@ -1,0 +1,9 @@
+{
+  "id": "open-antigravity",
+  "name": "Open in Antigravity",
+  "version": "1.0.0",
+  "minAppVersion": "1.7.2",
+  "description": "Ribbon button, command and file explorer context menu to open the vault in Antigravity",
+  "author": "Pranav Vyas",
+  "isDesktopOnly": true
+}
