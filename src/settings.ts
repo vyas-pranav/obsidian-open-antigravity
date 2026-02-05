@@ -33,11 +33,11 @@ export class OpenAntigravitySettingsTab extends PluginSettingTab {
     override display(): void {
         const { containerEl } = this;
         containerEl.empty();
-        containerEl.createEl("h3", { text: "General settings" });
+        new Setting(containerEl).setName("General settings").setHeading();
 
         new Setting(containerEl)
-            .setName("Display Ribbon Icon")
-            .setDesc("Toggle this OFF if you want to hide the Ribbon Icon.")
+            .setName("Display ribbon icon")
+            .setDesc("Toggle this OFF if you want to hide the ribbon icon.")
             .addToggle((toggle) =>
                 toggle.setValue(this.plugin.settings.ribbonIcon).onChange((value) => {
                     this.plugin.settings.ribbonIcon = value;
@@ -48,7 +48,7 @@ export class OpenAntigravitySettingsTab extends PluginSettingTab {
 
         new Setting(containerEl)
             .setName("Ribbon opens via 'antigravity' command")
-            .setDesc("Toggle this OFF if you'd prefer that the Ribbon Icon opens Antigravity via URL.")
+            .setDesc("Toggle this OFF if you'd prefer that the ribbon icon opens Antigravity via URL.")
             .addToggle((toggle) =>
                 toggle.setValue(this.plugin.settings.ribbonCommandUsesCode).onChange((value) => {
                     this.plugin.settings.ribbonCommandUsesCode = value;
@@ -68,7 +68,7 @@ export class OpenAntigravitySettingsTab extends PluginSettingTab {
                 }),
             );
 
-        containerEl.createEl("h3", { text: "Open via 'antigravity' CLI settings" });
+        new Setting(containerEl).setName("Open via 'antigravity' CLI settings").setHeading();
 
         new Setting(containerEl)
             .setName("Template for executing the 'antigravity' command")
@@ -87,7 +87,7 @@ export class OpenAntigravitySettingsTab extends PluginSettingTab {
                     }),
             );
 
-        containerEl.createEl("h3", { text: "Open via 'antigravity://' URL settings" });
+        new Setting(containerEl).setName("Open via 'antigravity://' URL settings").setHeading();
         containerEl.createEl("p", { text: "Use URL protocol to open Antigravity." });
 
         new Setting(containerEl)
@@ -103,7 +103,7 @@ export class OpenAntigravitySettingsTab extends PluginSettingTab {
             );
 
         new Setting(containerEl)
-            .setName("Path to Workspace")
+            .setName("Path to workspace")
             .setDesc(
                 'Defaults to the {{vaultpath}} template variable.',
             )

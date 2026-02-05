@@ -28,7 +28,7 @@ export default class OpenAntigravity extends Plugin {
     readonly logTag = `[${this.manifest.id}]`;
 
     override async onload(): Promise<void> {
-        console.log(`Loading ${this.manifest.name} plugin`);
+        console.debug(`Loading ${this.manifest.name} plugin`);
         addIcon(OpenAntigravity.iconId, OpenAntigravity.iconSvgContent);
         await this.loadSettings();
         this.refreshIconRibbon();
@@ -36,13 +36,13 @@ export default class OpenAntigravity extends Plugin {
         this.addSettingTab(new OpenAntigravitySettingsTab(this.app, this));
 
         this.addCommand({
-            id: "open-antigravity",
+            id: "open",
             name: "Open as Antigravity workspace",
             callback: this.openAntigravity.bind(this),
         });
 
         this.addCommand({
-            id: "open-antigravity-via-url",
+            id: "open-via-url",
             name: "Open as Antigravity workspace using a antigravity:// URL",
             callback: this.openAntigravityUrl.bind(this),
         });
@@ -54,13 +54,13 @@ export default class OpenAntigravity extends Plugin {
 
         if (this.DEV) {
             this.addCommand({
-                id: "open-antigravity-reload",
+                id: "reload",
                 name: "Reload the plugin in dev",
                 callback: this.reload.bind(this),
             });
 
             this.addCommand({
-                id: "open-antigravity-reset-settings",
+                id: "reset-settings",
                 name: "Reset plugins settings to default in dev",
                 callback: this.resetSettings.bind(this),
             });
@@ -89,7 +89,7 @@ export default class OpenAntigravity extends Plugin {
             .replaceAll("{{line}}", line.toString())
             .replaceAll("{{ch}}", ch.toString());
 
-        if (this.DEV) console.log(this.logTag, { command });
+        if (this.DEV) console.debug(this.logTag, { command });
         exec(command, (error) => {
             if (error) {
                 console.error(`${this.logTag} exec error: ${error.message}`);
@@ -105,7 +105,7 @@ export default class OpenAntigravity extends Plugin {
         const path = this.app.vault.adapter.getBasePath();
         const file = this.app.workspace.getActiveFile();
         const filePath = file?.path ?? "";
-        if (this.DEV) console.log(this.logTag, { settings: this.settings, path, filePath });
+        if (this.DEV) console.debug(this.logTag, { settings: this.settings, path, filePath });
 
         let url = `${this.settings.urlProtocol}://file/${path}`;
 
@@ -117,11 +117,11 @@ export default class OpenAntigravity extends Plugin {
             window.open(`${this.settings.urlProtocol}://file/${workspacePath}`);
 
             setTimeout(() => {
-                if (this.DEV) console.log(this.logTag, { url });
+                if (this.DEV) console.debug(this.logTag, { url });
                 window.open(url);
             }, 200);
         } else {
-            if (this.DEV) console.log(this.logTag, { url });
+            if (this.DEV) console.debug(this.logTag, { url });
             window.open(url);
         }
     }
@@ -164,11 +164,11 @@ export default class OpenAntigravity extends Plugin {
         const plugins = this.app.plugins;
         await plugins.disablePlugin(id);
         await plugins.enablePlugin(id);
-        console.log(`${this.logTag} reloaded`, this);
+        console.debug(`${this.logTag} reloaded`, this);
     }
 
     async resetSettings(): Promise<void> {
-        console.log(this.logTag, { old: this.settings, default: DEFAULT_SETTINGS });
+        console.debug(this.logTag, { old: this.settings, default: DEFAULT_SETTINGS });
         this.settings = DEFAULT_SETTINGS;
         await this.saveData(this.settings);
     }
