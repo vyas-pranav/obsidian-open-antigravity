@@ -3,7 +3,7 @@
   "name": "Open in Antigravity",
   "version": "1.0.0",
   "minAppVersion": "1.7.2",
-  "description": "Ribbon button, command and file explorer context menu to open the vault in Antigravity",
+  "description": "Ribbon button, command and file explorer context menu to open the vault in Antigravity.",
   "author": "PVThink",
   "isDesktopOnly": true
 }

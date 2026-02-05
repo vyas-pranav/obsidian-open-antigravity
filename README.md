@@ -32,6 +32,12 @@ This plugin for [Obsidian](https://obsidian.md/) allows you to open your vault o
 2.  Run `npm install`.
 3.  Run `npm run build` to build the plugin.
 
+
+## Inspiration
+
+This plugin is inspired by the [Open in VS Code](https://github.com/joshuajohnson/obsidian-open-in-vscode) plugin.  
+
+
 ## License
 
 MIT
