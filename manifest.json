@@ -4,6 +4,6 @@
   "version": "1.0.0",
   "minAppVersion": "1.7.2",
   "description": "Ribbon button, command and file explorer context menu to open the vault in Antigravity",
-  "author": "Pranav Vyas",
+  "author": "PVThink",
   "isDesktopOnly": true
 }
