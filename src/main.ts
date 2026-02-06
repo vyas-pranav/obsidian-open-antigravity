@@ -37,13 +37,13 @@ export default class OpenAntigravity extends Plugin {
 
         this.addCommand({
             id: "open",
-            name: "Open as Antigravity workspace",
+            name: "Open in Antigravity",
             callback: this.openAntigravity.bind(this),
         });
 
         this.addCommand({
             id: "open-via-url",
-            name: "Open as Antigravity workspace using a antigravity:// URL",
+            name: "Open in Antigravity via URL",
             callback: this.openAntigravityUrl.bind(this),
         });
 
